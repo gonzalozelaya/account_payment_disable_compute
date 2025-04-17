@@ -16,7 +16,7 @@ class AccountMoveLine(models.Model):
         # Crear un pago en grupo
         payment_group = self.env["account.payment"].create({
             "partner_id": partner.id,
-            "partner_type": "customer" if self.move_type in ["out_invoice", "out_refund"] else "supplier",
+            "payment_type": "inbound" if self.move_type in ["out_invoice", "out_refund"] else "outbound",
             "company_id": self.company_id.id,
         })
 
